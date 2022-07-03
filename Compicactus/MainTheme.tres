@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://Compicactus/new_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Compicactus/BoldFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Compicactus/new_styleboxflat.tres" type="StyleBox" id=3]
+[ext_resource path="res://Compicactus/new_styleboxflat_disabled.tres" type="StyleBox" id=4]
+[ext_resource path="res://Compicactus/new_styleboxflat_hover.tres" type="StyleBox" id=5]
+
+[resource]
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = ExtResource( 4 )
+Button/styles/focus = ExtResource( 3 )
+Button/styles/hover = ExtResource( 5 )
+Button/styles/normal = ExtResource( 3 )
+Button/styles/pressed = ExtResource( 3 )
+Label/fonts/font = ExtResource( 1 )
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+RichTextLabel/fonts/bold_font = ExtResource( 2 )
+RichTextLabel/fonts/normal_font = ExtResource( 1 )
+TextEdit/fonts/font = ExtResource( 1 )

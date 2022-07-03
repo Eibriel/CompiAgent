@@ -1,0 +1,18 @@
+
+
+
+
+
+compicactus.sex!male
+compicactus.class!vegetable
+compicactus.in!dining_room
+compicactus.relationship.user.evaluation.attractive!40
+compicactus.relationship.user.evaluation.humour!20
+
+wants (utility-modifier 20):
+Other.class!human and
+is_pleased_with.Other.brown
+
+role-evaluation:
+Agent.relationship.Evaluated.role.Role!Value!Explanation
+
