@@ -1,3 +1,7 @@
+####
+# Class to handle frame structures
+####
+
 # A slot is a named set of facets.
 # A facet is a named set of views and
 # a view is a named set of fillers.
@@ -26,12 +30,12 @@ class Facet:
 	func _init(_name):
 		name = _name
 
-	func add_filler(name, value):
+	func add_filler(_name, value):
 		# TODO Should append to a list
 		# TODO if present, return error
-		fillers[name] = value
+		fillers[_name] = value
 	
-	func erase_filler(name, comparison_mode):
+	func erase_filler(_name, comparison_mode):
 		# TODO
 		pass
 	
@@ -47,8 +51,8 @@ class Facet:
 	func get_fillers(inherit):
 		pass
 	
-	func get_filler(name):
-		return fillers[name]
+	func get_filler(_name):
+		return fillers[_name]
 
 
 class Slot:

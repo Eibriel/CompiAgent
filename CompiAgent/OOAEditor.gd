@@ -9,8 +9,8 @@ onready var button_save_concept = $VBoxContainer/VSplitContainer/HSplitContainer
 onready var button_new_concept = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ButtonNewConcept
 onready var button_add_property = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ButtonAddProperty
 
-# var ConceptEditor = load("res://OpenOntoAgent/modules/concept_editor.tscn")
-var ConceptItem = load("res://OpenOntoAgent/modules/concept_item.tscn")
+# var ConceptEditor = load("res://CompiAgent/modules/concept_editor.tscn")
+var ConceptItem = load("res://CompiAgent/modules/concept_item.tscn")
 
 var json_path = "res://concepts.json"
 

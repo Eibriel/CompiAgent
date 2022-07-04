@@ -1,7 +1,7 @@
 extends 'res://addons/gut/test.gd'
 
 ## Ontology class
-var Ontology = load("res://OpenOntoAgent/ontology_class.gd")
+var Ontology = load("res://CompiAgent/ontology_class.gd")
 
 ## Ontology instance
 var onto
