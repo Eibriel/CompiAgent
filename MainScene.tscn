@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://TestRunner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://CompiAgent/OOAEditor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ToyTest.tscn" type="PackedScene" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -11,7 +12,7 @@ anchor_bottom = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Concept Editor" type="Tabs" parent="TabContainer"]
+[node name="Frame Editor" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -19,7 +20,36 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Control" parent="TabContainer/Concept Editor" instance=ExtResource( 2 )]
+[node name="Control" parent="TabContainer/Frame Editor" instance=ExtResource( 2 )]
+
+[node name="Instance Editor" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Lexeme Editor" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Toy Test" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Control" parent="TabContainer/Toy Test" instance=ExtResource( 3 )]
 
 [node name="Tests" type="Tabs" parent="TabContainer"]
 visible = false
@@ -31,3 +61,5 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Gut" parent="TabContainer/Tests" instance=ExtResource( 1 )]
+visible = true
+_should_print_to_console = false

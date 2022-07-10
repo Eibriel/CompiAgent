@@ -1,0 +1,146 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CompiToyTest.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LabelAnswers" type="Label" parent="MainContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Human string:"
+
+[node name="TextAnswers" type="Label" parent="MainContainer"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 32.0
+size_flags_vertical = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer"]
+margin_top = 36.0
+margin_right = 1024.0
+margin_bottom = 40.0
+
+[node name="LabelRawTMR" type="Label" parent="MainContainer"]
+margin_top = 44.0
+margin_right = 1024.0
+margin_bottom = 58.0
+text = "Raw Text Meaning Representation (TMR):"
+
+[node name="TextRawTMR" type="RichTextLabel" parent="MainContainer"]
+margin_top = 62.0
+margin_right = 1024.0
+margin_bottom = 356.0
+size_flags_vertical = 3
+text = "{}"
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer"]
+margin_top = 360.0
+margin_right = 1024.0
+margin_bottom = 364.0
+
+[node name="ButtonSendTMR" type="Button" parent="MainContainer"]
+margin_top = 368.0
+margin_right = 1024.0
+margin_bottom = 388.0
+text = "Send TMR"
+
+[node name="GridButtons" type="GridContainer" parent="MainContainer"]
+margin_top = 392.0
+margin_right = 1024.0
+margin_bottom = 436.0
+columns = 5
+
+[node name="ButtonCube" type="Button" parent="MainContainer/GridButtons"]
+margin_right = 58.0
+margin_bottom = 20.0
+text = "Cube"
+
+[node name="ButtonSphere" type="Button" parent="MainContainer/GridButtons"]
+margin_left = 62.0
+margin_right = 152.0
+margin_bottom = 20.0
+text = "Sphere"
+
+[node name="ButtonCylinder" type="Button" parent="MainContainer/GridButtons"]
+margin_left = 156.0
+margin_right = 241.0
+margin_bottom = 20.0
+text = "Cylinder"
+
+[node name="ButtonPaint" type="Button" parent="MainContainer/GridButtons"]
+margin_left = 245.0
+margin_right = 298.0
+margin_bottom = 20.0
+text = "Paint"
+
+[node name="ButtonApplyPaint" type="Button" parent="MainContainer/GridButtons"]
+margin_left = 302.0
+margin_right = 391.0
+margin_bottom = 20.0
+text = "Apply-Paint"
+
+[node name="ButtonHuman" type="Button" parent="MainContainer/GridButtons"]
+margin_top = 24.0
+margin_right = 58.0
+margin_bottom = 44.0
+text = "Human"
+
+[node name="ButtonBlueColored" type="Button" parent="MainContainer/GridButtons"]
+margin_left = 62.0
+margin_top = 24.0
+margin_right = 152.0
+margin_bottom = 44.0
+text = "BlueColored"
+
+[node name="ButtonRedColored" type="Button" parent="MainContainer/GridButtons"]
+margin_left = 156.0
+margin_top = 24.0
+margin_right = 241.0
+margin_bottom = 44.0
+text = "RedColored"
+
+[node name="ButtonAssert" type="Button" parent="MainContainer/GridButtons"]
+margin_left = 245.0
+margin_top = 24.0
+margin_right = 298.0
+margin_bottom = 44.0
+text = "Assert"
+
+[node name="ButtonRequestInfo" type="Button" parent="MainContainer/GridButtons"]
+margin_left = 302.0
+margin_top = 24.0
+margin_right = 391.0
+margin_bottom = 44.0
+text = "RequestInfo"
+
+[node name="ButtonReset" type="Button" parent="MainContainer"]
+margin_top = 440.0
+margin_right = 1024.0
+margin_bottom = 460.0
+text = "Reset TMR"
+
+[node name="HSeparator3" type="HSeparator" parent="MainContainer"]
+margin_top = 464.0
+margin_right = 1024.0
+margin_bottom = 468.0
+
+[node name="LabelConceptInfo" type="Label" parent="MainContainer"]
+margin_top = 472.0
+margin_right = 1024.0
+margin_bottom = 486.0
+text = "Concept info:"
+
+[node name="TextConceptInfo" type="RichTextLabel" parent="MainContainer"]
+margin_top = 490.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.37
+text = "Info"

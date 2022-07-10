@@ -42,51 +42,43 @@ size_flags_vertical = 3
 [node name="LabelName" type="Label" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
 margin_right = 734.0
 margin_bottom = 14.0
-text = "Name:"
+text = "Frame Name:"
 
 [node name="LineEditName" type="LineEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 734.0
 margin_bottom = 42.0
+placeholder_text = "Frame Name"
 
-[node name="LabelDescription" type="Label" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="VBoxContainerSlots" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
 margin_top = 46.0
 margin_right = 734.0
-margin_bottom = 60.0
-text = "Description:"
-
-[node name="LineEditDescription" type="LineEdit" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 64.0
-margin_right = 734.0
-margin_bottom = 88.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 92.0
-margin_right = 734.0
-margin_bottom = 92.0
+margin_bottom = 426.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 96.0
+margin_top = 430.0
 margin_right = 734.0
-margin_bottom = 100.0
+margin_bottom = 434.0
 
-[node name="ButtonAddProperty" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 104.0
+[node name="ButtonAddSlot" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+margin_top = 438.0
 margin_right = 734.0
-margin_bottom = 124.0
-text = "Add Property"
+margin_bottom = 458.0
+text = "Add Slot"
 
-[node name="ButtonSaveConcept" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 128.0
+[node name="ButtonSaveFrame" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+margin_top = 462.0
 margin_right = 734.0
-margin_bottom = 148.0
-text = "Save Concept"
+margin_bottom = 482.0
+text = "Save Frame"
 
-[node name="ButtonNewConcept" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 152.0
+[node name="ButtonNewFrame" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+margin_top = 486.0
 margin_right = 734.0
-margin_bottom = 172.0
-text = "New Concept"
+margin_bottom = 506.0
+text = "New Frame"
 
 [node name="Tree" type="Tree" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
 margin_left = 746.0
