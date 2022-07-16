@@ -43,7 +43,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Toy Test" type="Tabs" parent="TabContainer"]
+[node name="TMR Editor" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,7 +52,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Control" parent="TabContainer/Toy Test" instance=ExtResource( 3 )]
+[node name="Control" parent="TabContainer/TMR Editor" instance=ExtResource( 3 )]
 
 [node name="Tests" type="Tabs" parent="TabContainer"]
 visible = false

@@ -11,136 +11,93 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="LabelAnswers" type="Label" parent="MainContainer"]
-margin_right = 1024.0
+[node name="LabelRealizedText" type="Label" parent="MainContainer"]
+margin_right = 1080.0
 margin_bottom = 14.0
-text = "Human string:"
+text = "Realized text:"
 
-[node name="TextAnswers" type="Label" parent="MainContainer"]
+[node name="TextRealizedText" type="Label" parent="MainContainer"]
 margin_top = 18.0
-margin_right = 1024.0
+margin_right = 1080.0
 margin_bottom = 32.0
 size_flags_vertical = 1
 
 [node name="HSeparator" type="HSeparator" parent="MainContainer"]
 margin_top = 36.0
-margin_right = 1024.0
+margin_right = 1080.0
 margin_bottom = 40.0
 
-[node name="LabelRawTMR" type="Label" parent="MainContainer"]
+[node name="LabelTMR" type="Label" parent="MainContainer"]
 margin_top = 44.0
-margin_right = 1024.0
+margin_right = 1080.0
 margin_bottom = 58.0
-text = "Raw Text Meaning Representation (TMR):"
+text = "Text Meaning Representation (TMR):"
 
-[node name="TextRawTMR" type="RichTextLabel" parent="MainContainer"]
+[node name="TextTMR" type="RichTextLabel" parent="MainContainer"]
 margin_top = 62.0
-margin_right = 1024.0
-margin_bottom = 356.0
+margin_right = 1080.0
+margin_bottom = 447.0
 size_flags_vertical = 3
 text = "{}"
 
 [node name="HSeparator2" type="HSeparator" parent="MainContainer"]
-margin_top = 360.0
-margin_right = 1024.0
-margin_bottom = 364.0
+margin_top = 451.0
+margin_right = 1080.0
+margin_bottom = 455.0
 
 [node name="ButtonSendTMR" type="Button" parent="MainContainer"]
-margin_top = 368.0
-margin_right = 1024.0
-margin_bottom = 388.0
+margin_top = 459.0
+margin_right = 1080.0
+margin_bottom = 479.0
 text = "Send TMR"
 
-[node name="GridButtons" type="GridContainer" parent="MainContainer"]
-margin_top = 392.0
-margin_right = 1024.0
-margin_bottom = 436.0
+[node name="TextSelectedTokens" type="Label" parent="MainContainer"]
+margin_top = 483.0
+margin_right = 1080.0
+margin_bottom = 497.0
+size_flags_vertical = 1
+text = "Selected Tokens:"
+
+[node name="GridButtonsSelectedTokens" type="GridContainer" parent="MainContainer"]
+margin_top = 501.0
+margin_right = 1080.0
+margin_bottom = 501.0
 columns = 5
 
-[node name="ButtonCube" type="Button" parent="MainContainer/GridButtons"]
-margin_right = 58.0
-margin_bottom = 20.0
-text = "Cube"
+[node name="TextAvailableTokens" type="Label" parent="MainContainer"]
+margin_top = 505.0
+margin_right = 1080.0
+margin_bottom = 519.0
+size_flags_vertical = 1
+text = "Available Tokens:"
 
-[node name="ButtonSphere" type="Button" parent="MainContainer/GridButtons"]
-margin_left = 62.0
-margin_right = 152.0
-margin_bottom = 20.0
-text = "Sphere"
-
-[node name="ButtonCylinder" type="Button" parent="MainContainer/GridButtons"]
-margin_left = 156.0
-margin_right = 241.0
-margin_bottom = 20.0
-text = "Cylinder"
-
-[node name="ButtonPaint" type="Button" parent="MainContainer/GridButtons"]
-margin_left = 245.0
-margin_right = 298.0
-margin_bottom = 20.0
-text = "Paint"
-
-[node name="ButtonApplyPaint" type="Button" parent="MainContainer/GridButtons"]
-margin_left = 302.0
-margin_right = 391.0
-margin_bottom = 20.0
-text = "Apply-Paint"
-
-[node name="ButtonHuman" type="Button" parent="MainContainer/GridButtons"]
-margin_top = 24.0
-margin_right = 58.0
-margin_bottom = 44.0
-text = "Human"
-
-[node name="ButtonBlueColored" type="Button" parent="MainContainer/GridButtons"]
-margin_left = 62.0
-margin_top = 24.0
-margin_right = 152.0
-margin_bottom = 44.0
-text = "BlueColored"
-
-[node name="ButtonRedColored" type="Button" parent="MainContainer/GridButtons"]
-margin_left = 156.0
-margin_top = 24.0
-margin_right = 241.0
-margin_bottom = 44.0
-text = "RedColored"
-
-[node name="ButtonAssert" type="Button" parent="MainContainer/GridButtons"]
-margin_left = 245.0
-margin_top = 24.0
-margin_right = 298.0
-margin_bottom = 44.0
-text = "Assert"
-
-[node name="ButtonRequestInfo" type="Button" parent="MainContainer/GridButtons"]
-margin_left = 302.0
-margin_top = 24.0
-margin_right = 391.0
-margin_bottom = 44.0
-text = "RequestInfo"
+[node name="GridButtonsAvailableTokens" type="GridContainer" parent="MainContainer"]
+margin_top = 523.0
+margin_right = 1080.0
+margin_bottom = 523.0
+columns = 5
 
 [node name="ButtonReset" type="Button" parent="MainContainer"]
-margin_top = 440.0
-margin_right = 1024.0
-margin_bottom = 460.0
+margin_top = 527.0
+margin_right = 1080.0
+margin_bottom = 547.0
 text = "Reset TMR"
 
 [node name="HSeparator3" type="HSeparator" parent="MainContainer"]
-margin_top = 464.0
-margin_right = 1024.0
-margin_bottom = 468.0
+margin_top = 551.0
+margin_right = 1080.0
+margin_bottom = 555.0
 
 [node name="LabelConceptInfo" type="Label" parent="MainContainer"]
-margin_top = 472.0
-margin_right = 1024.0
-margin_bottom = 486.0
+margin_top = 559.0
+margin_right = 1080.0
+margin_bottom = 573.0
 text = "Concept info:"
 
 [node name="TextConceptInfo" type="RichTextLabel" parent="MainContainer"]
-margin_top = 490.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_top = 577.0
+margin_right = 1080.0
+margin_bottom = 720.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.37
 text = "Info"
