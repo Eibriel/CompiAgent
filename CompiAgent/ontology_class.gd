@@ -23,17 +23,19 @@
 
 var frames = {}
 
+
 class Facet:
 	var name = ""
-	var fillers = {}
+	var fillers = []
 	
 	func _init(_name):
 		name = _name
 
-	func add_filler(_name, value):
-		# TODO Should append to a list
-		# TODO if present, return error
-		fillers[_name] = value
+	func add_filler(value):
+		if fillers.has(value):
+			return
+		else:
+			fillers.append(value)
 	
 	func erase_filler(_name, comparison_mode):
 		# TODO
@@ -49,7 +51,8 @@ class Facet:
 		pass
 	
 	func get_fillers(inherit):
-		pass
+		# TODO use inherit
+		return fillers
 	
 	func get_filler(_name):
 		return fillers[_name]
@@ -62,27 +65,10 @@ class Slot:
 	func _init(_name):
 		name = _name
 	
-	func add_facet(facet):
-		# TODO if present, return error
-		facets[facet.name] = facet
-		"""
-		# Set Inverse
-		# Check if has inverse
-		var relation_frame = onto.get_frame(facet.name)
-		if relation_frame == null:
-			return
-		var inverse_facet = relation_frame.get_facet("INVERSE")
-		if inverse_facet == null:
-			return
-		# Get the inverse frame
-		var inverse_name = inverse_facet.get_filler("sem")
-		var apply_inverse_to = facet.get_filler("value")
-		var add_inverse_to_frame = onto.get_frame(apply_inverse_to)
-		# Add facet to inverse frame
-		var new_facet = onto.Facet.new(inverse_name)
-		new_facet.add_filler("value", name)
-		add_inverse_to_frame.add_facet(new_facet)
-		"""
+	func add_facet(facet_id):
+		var f = Facet.new(facet_id)
+		facets[facet_id] = f
+		return f
 	
 	func erase_facet(facet_name, comparison_mode):
 		# TODO
@@ -105,10 +91,13 @@ class Frame:
 	func _init(_name):
 		name = _name
 
-	func add_slot(slot_id):
-		var c = Slot.new(slot_id)
-		slots[slot_id] = c
-		return c
+	func add_slot(slot_name):
+		var s = get_slot(slot_name)
+		if s:
+			return s
+		s = Slot.new(slot_name)
+		slots[slot_name] = s
+		return s
 	
 	func get_slot(slot_name):
 		if not slots.has(slot_name):
@@ -116,7 +105,9 @@ class Frame:
 		return slots[slot_name]
 		
 	func addFiller(slotname, facetname, filler):
-		pass
+		var s = add_slot(slotname)
+		var f = s.add_facet(facetname)
+		f.add_filler(filler)
 	
 	func addFillers(slotname, facetname, fillers):
 		pass
@@ -195,8 +186,10 @@ func get_related(frame_id, relation_id):
 	
 	if relation == null or frame == null:
 		return null
-	
-	return frame.get_facet(relation_id).get_filler("value")
+	if frame.get_slot(relation_id):
+		return frame.get_slot(relation_id).get_facet("value")
+	else:
+		return false
 
 func is_a_p(frame, possible_parent):
 	# is ancestor of? true false
@@ -204,4 +197,22 @@ func is_a_p(frame, possible_parent):
 
 func part_of_p(frame, possible_container):
 	# is part of? true false
+	pass
+
+func get_frame_by_id(id):
+	return frames[id]
+
+func get_frames_names():
+	return frames.keys()
+
+func load_from_dictionary(json_data):
+	for frame in json_data:
+		var f = add_frame(frame)
+		for slot in json_data[frame]:
+			for facet in json_data[frame][slot]:
+				for filler in json_data[frame][slot][facet]:
+					# TODO use addFillers
+					f.addFiller(slot, facet, filler)
+
+func turn_into_dictionary():
 	pass

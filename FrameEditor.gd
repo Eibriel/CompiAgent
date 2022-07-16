@@ -13,12 +13,16 @@ var SlotEditor = load("res://CompiAgent/modules/slot_editor.tscn")
 
 var json_path = "res://frames.json"
 
-# var ed
+## Ontology class
+var Ontology = load("res://CompiAgent/ontology_class.gd")
+
+## Ontology instance
+var onto = Ontology.new()
 
 var frames = {
 	"all": {
 		"description": {
-			"value": ["\"Origin frame, source for all frames\""]
+			"value": ["\"Origin frame, source for all frames (default frames)\""]
 		}
 	},
 	"event": {
@@ -28,19 +32,31 @@ var frames = {
 		"is-a": {
 			"value": ["all"]
 		}
+	},
+	
+	"is-a": {
+		"domain": {
+			"sem": ["*all"]
+		},
+		"range": {
+			"sem": ["*all"]
+		}
 	}
 }
 
-func add_item_to_tree(tree, root, dict, section):
+func add_item_to_tree(tree, root, onto, section):
 	var section_item = tree.create_item(root)
 	section_item.set_text(0, section)
 
-	for d in dict:
-		if dict[d].has("is-a") and dict[d]["is-a"]["value"].has(section):
-			add_item_to_tree(tree, section_item, dict, d)
+	var frames_names = onto.get_frames_names()
 
-func add_to_tree(tree, root, dict):
-	add_item_to_tree(tree, root, dict, "all")
+	for id in frames_names:
+		var frame = onto.get_frame_by_id(id)
+		var is_a_related = onto.get_related(frame.name, "is-a")
+		if not is_a_related:
+			continue
+		if is_a_related.get_fillers(false).has(section):
+			add_item_to_tree(tree, section_item, onto, frame.name)
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,6 +74,8 @@ func _ready():
 		frames = parse_json(text)
 		file.close()
 	
+	onto.load_from_dictionary(frames)
+	
 	refresh_tree()
 
 
@@ -66,7 +84,7 @@ func refresh_tree():
 	var root_frame = frames_tree.create_item()
 	frames_tree.set_hide_root(true)
 	
-	add_to_tree(frames_tree, root_frame, frames)
+	add_item_to_tree(frames_tree, root_frame, onto, "all")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

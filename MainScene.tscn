@@ -65,4 +65,5 @@ margin_bottom = -4.0
 
 [node name="Gut" parent="TabContainer/Tests" instance=ExtResource( 1 )]
 visible = true
+_run_on_load = false
 _should_print_to_console = false
