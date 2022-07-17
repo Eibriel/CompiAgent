@@ -2,14 +2,14 @@ extends Control
 
 onready var frames_tree = $VBoxContainer/VSplitContainer/HSplitContainer/Tree
 onready var frame_edit = $VBoxContainer/VSplitContainer/HSplitContainer/RichTextLabel
-onready var frame_slots = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/VBoxContainerSlots
+onready var frame_slots = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ScrollContainer/VBoxContainerSlots
 onready var frame_name = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/LineEditName
 onready var button_save_frame = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ButtonSaveFrame
 onready var button_new_frame = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ButtonNewFrame
 onready var button_add_slot = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ButtonAddSlot
 
-var FacetEditor = load("res://CompiAgent/modules/facet_editor.tscn")
-var SlotEditor = load("res://CompiAgent/modules/slot_editor.tscn")
+var FacetEditor = load("res://modules/facet_editor.tscn")
+var SlotEditor = load("res://modules/slot_editor.tscn")
 
 var json_path = "res://frames.json"
 
@@ -113,11 +113,11 @@ func display_info(fname):
 	
 	for slot in frame.get_slot_names():
 		var slot_editor = addSlot()
-		var slot_name = slot_editor.get_node("VBoxContainer/SlotName")
+		var slot_name = slot_editor.get_node("SlotName")
 		slot_name.set_text(slot)
 		for facet in frame.get_slot(slot).get_facet_names():
 			var facet_editor = addFacet(slot_editor)
-			var facet_name = facet_editor.get_node("VBoxContainer/FacetName")
+			var facet_name = facet_editor.get_node("FacetName")
 			facet_name.set_text(facet)
 			for filler in frame.get_slot(slot).get_facet(facet).get_fillers(false):
 				var filler_editor = addFiller(facet_editor)
@@ -126,7 +126,7 @@ func display_info(fname):
 
 func addSlot():
 	var slot_editor = SlotEditor.instance()
-	var button_add_facet = slot_editor.get_node("VBoxContainer/ButtonAddFacet")
+	var button_add_facet = slot_editor.get_node("ButtonAddFacet")
 	button_add_facet.connect("button_up", self, "_on_ButtonAddFacet_button_up", [slot_editor])
 	frame_slots.add_child(slot_editor)
 	return slot_editor
@@ -134,16 +134,16 @@ func addSlot():
 
 func addFacet(slot_editor):
 	var facet_editor = FacetEditor.instance()
-	var button_add_filler = facet_editor.get_node("VBoxContainer/ButtonAddFiller")
+	var button_add_filler = facet_editor.get_node("ButtonAddFiller")
 	button_add_filler.connect("button_up", self, "_on_ButtonAddFiller_button_up", [facet_editor])
-	var frame_facets = slot_editor.get_node("VBoxContainer/VBoxContainerFacets")
+	var frame_facets = slot_editor.get_node("VBoxContainerFacets")
 	frame_facets.add_child(facet_editor)
 	return facet_editor
 
 func addFiller(facet_editor):
 	var filler_lineedit = LineEdit.new()
 	filler_lineedit.placeholder_text = "Expression"
-	var frame_fillers = facet_editor.get_node("VBoxContainer/VBoxContainerFillers")
+	var frame_fillers = facet_editor.get_node("VBoxContainerFillers")
 	frame_fillers.add_child(filler_lineedit)
 	return filler_lineedit
 
@@ -156,10 +156,10 @@ func _on_ButtonSaveFrame_button_up():
 	onto.add_frame(fname)
 	
 	for slot in frame_slots.get_children():
-		var slot_name = slot.get_node("VBoxContainer/SlotName").get_text()
-		for facet in slot.get_node("VBoxContainer/VBoxContainerFacets").get_children():
-			var facet_name = facet.get_node("VBoxContainer/FacetName").get_text()
-			for filler in facet.get_node("VBoxContainer/VBoxContainerFillers").get_children():
+		var slot_name = slot.get_node("SlotName").get_text()
+		for facet in slot.get_node("VBoxContainerFacets").get_children():
+			var facet_name = facet.get_node("FacetName").get_text()
+			for filler in facet.get_node("VBoxContainerFillers").get_children():
 				var filler_expression = filler.get_text()
 				onto.get_frame(fname).addFiller(slot_name, facet_name, filler_expression)
 	

@@ -20,6 +20,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+scrolling_enabled = false
 
 [node name="Control" parent="TabContainer/Frame Editor" instance=ExtResource( 2 )]
 
@@ -31,6 +32,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+scrolling_enabled = false
 
 [node name="Control" parent="TabContainer/Instance Editor" instance=ExtResource( 4 )]
 
@@ -42,6 +44,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+scrolling_enabled = false
 
 [node name="TMR Editor" type="Tabs" parent="TabContainer"]
 visible = false
@@ -51,6 +54,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+scrolling_enabled = false
 
 [node name="Control" parent="TabContainer/TMR Editor" instance=ExtResource( 3 )]
 
@@ -62,6 +66,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+scrolling_enabled = false
 
 [node name="Gut" parent="TabContainer/Tests" instance=ExtResource( 1 )]
 visible = true

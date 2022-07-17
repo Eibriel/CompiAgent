@@ -50,10 +50,17 @@ margin_right = 734.0
 margin_bottom = 42.0
 placeholder_text = "Frame Name"
 
-[node name="VBoxContainerSlots" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
 margin_top = 46.0
 margin_right = 734.0
 margin_bottom = 426.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainerSlots" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ScrollContainer"]
+margin_right = 734.0
+margin_bottom = 380.0
+rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

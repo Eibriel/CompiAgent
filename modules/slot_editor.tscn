@@ -1,0 +1,30 @@
+[gd_scene format=2]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+anchor_right = 1.0
+margin_bottom = 70.0
+
+[node name="LabelSlot" type="Label" parent="."]
+margin_right = 1080.0
+margin_bottom = 14.0
+text = "Slot:"
+
+[node name="SlotName" type="LineEdit" parent="."]
+margin_top = 18.0
+margin_right = 1080.0
+margin_bottom = 42.0
+placeholder_text = "Slot Name"
+
+[node name="VBoxContainerFacets" type="VBoxContainer" parent="."]
+margin_top = 46.0
+margin_right = 1080.0
+margin_bottom = 46.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonAddFacet" type="Button" parent="."]
+margin_top = 50.0
+margin_right = 1080.0
+margin_bottom = 70.0
+text = "Add Facet"
