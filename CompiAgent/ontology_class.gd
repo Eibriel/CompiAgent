@@ -65,9 +65,12 @@ class Slot:
 	func _init(_name):
 		name = _name
 	
-	func add_facet(facet_id):
-		var f = Facet.new(facet_id)
-		facets[facet_id] = f
+	func add_facet(facet_name):
+		var f = get_facet(facet_name)
+		if f:
+			return f
+		f = Facet.new(facet_name)
+		facets[facet_name] = f
 		return f
 	
 	func erase_facet(facet_name, comparison_mode):
@@ -79,6 +82,9 @@ class Slot:
 		if not facets.has(facet_name):
 			return
 		return facets[facet_name]
+	
+	func get_facet_names():
+		return facets.keys()
 	
 	func do_facets(function):
 		pass
@@ -103,7 +109,10 @@ class Frame:
 		if not slots.has(slot_name):
 			return false
 		return slots[slot_name]
-		
+	
+	func get_slot_names():
+		return slots.keys()
+	
 	func addFiller(slotname, facetname, filler):
 		var s = add_slot(slotname)
 		var f = s.add_facet(facetname)
@@ -129,21 +138,20 @@ class Frame:
 		pass
 	
 	func createSlot(inherit, allslots):
-		# get inherited slots and facets
+		# 
 		pass
 
 
 
-func add_frame(frame_id):
-	var f = Frame.new(frame_id)
-	frames[frame_id] = f
+func add_frame(frame_name):
+	var f = Frame.new(frame_name)
+	frames[frame_name] = f
 	return f
 
-func erase_frame(frame_if):
-	# TODO
-	pass
+func erase_frame(frame_name):
+	frames.erase(frame_name)
 
-func erase_slot(frame_id, comparison_mode):
+func erase_slot(frame_name, comparison_mode):
 	# TODO
 	# Delete all fillers from all facets of the specified slot.
 	pass
@@ -215,4 +223,16 @@ func load_from_dictionary(json_data):
 					f.addFiller(slot, facet, filler)
 
 func turn_into_dictionary():
-	pass
+	var frames_data = {}
+	for frame_name in get_frames_names():
+		frames_data[frame_name] = {}
+		var frame = get_frame(frame_name)
+		for slot_name in frame.get_slot_names():
+			frames_data[frame_name][slot_name] = {}
+			var slot = frame.get_slot(slot_name)
+			for facet_name in slot.get_facet_names():
+				var facet = slot.get_facet(facet_name)
+				frames_data[frame_name][slot_name][facet_name] = facet.get_fillers(false)
+	return frames_data
+				
+			

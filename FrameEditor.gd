@@ -19,7 +19,7 @@ var Ontology = load("res://CompiAgent/ontology_class.gd")
 ## Ontology instance
 var onto = Ontology.new()
 
-var frames = {
+var default_frames = {
 	"all": {
 		"description": {
 			"value": ["\"Origin frame, source for all frames (default frames)\""]
@@ -43,20 +43,6 @@ var frames = {
 		}
 	}
 }
-
-func add_item_to_tree(tree, root, onto, section):
-	var section_item = tree.create_item(root)
-	section_item.set_text(0, section)
-
-	var frames_names = onto.get_frames_names()
-
-	for id in frames_names:
-		var frame = onto.get_frame_by_id(id)
-		var is_a_related = onto.get_related(frame.name, "is-a")
-		if not is_a_related:
-			continue
-		if is_a_related.get_fillers(false).has(section):
-			add_item_to_tree(tree, section_item, onto, frame.name)
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -71,12 +57,32 @@ func _ready():
 	if file.file_exists(json_path):
 		file.open(json_path, File.READ)
 		var text = file.get_as_text()
-		frames = parse_json(text)
+		var frames = parse_json(text)
 		file.close()
-	
-	onto.load_from_dictionary(frames)
+		onto.load_from_dictionary(frames)
+	else:
+		onto.load_from_dictionary(default_frames)
 	
 	refresh_tree()
+
+
+func add_item_to_tree(tree, root, frame_name):
+	# Create item on tree for frame_name
+	var frame_item = tree.create_item(root)
+	frame_item.set_text(0, frame_name)
+
+	# Get all frame names
+	var frames_names = onto.get_frames_names()
+
+	for id in frames_names:
+		# Get is-a elements for id
+		var is_a_related = onto.get_related(id, "is-a")
+		if not is_a_related:
+			continue
+		# If frame_name in is-a
+		# add to tree as child of frame_item
+		if is_a_related.get_fillers(false).has(frame_name):
+			add_item_to_tree(tree, frame_item, id)
 
 
 func refresh_tree():
@@ -84,12 +90,7 @@ func refresh_tree():
 	var root_frame = frames_tree.create_item()
 	frames_tree.set_hide_root(true)
 	
-	add_item_to_tree(frames_tree, root_frame, onto, "all")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+	add_item_to_tree(frames_tree, root_frame, "all")
 
 
 func _on_Tree_cell_selected():
@@ -99,24 +100,26 @@ func _on_Tree_cell_selected():
 	display_info(cname)
 
 
-func display_info(cname):
-	frame_name.set_text(cname)
+func display_info(fname):
+	frame_name.set_text(fname)
 
 	for m in frame_slots.get_children():
 		frame_slots.remove_child(m)
 
-	if cname == "":
+	if fname == "":
 		return
-
-	for slot in frames[cname]:
+	
+	var frame = onto.get_frame_by_id(fname)
+	
+	for slot in frame.get_slot_names():
 		var slot_editor = addSlot()
 		var slot_name = slot_editor.get_node("VBoxContainer/SlotName")
 		slot_name.set_text(slot)
-		for facet in frames[cname][slot]:
+		for facet in frame.get_slot(slot).get_facet_names():
 			var facet_editor = addFacet(slot_editor)
 			var facet_name = facet_editor.get_node("VBoxContainer/FacetName")
 			facet_name.set_text(facet)
-			for filler in frames[cname][slot][facet]:
+			for filler in frame.get_slot(slot).get_facet(facet).get_fillers(false):
 				var filler_editor = addFiller(facet_editor)
 				filler_editor.set_text(filler)
 
@@ -145,26 +148,26 @@ func addFiller(facet_editor):
 	return filler_lineedit
 
 func _on_ButtonSaveFrame_button_up():
-	var cname = frame_name.get_text()
-	if cname == "":
+	var fname = frame_name.get_text()
+	if fname == "":
 		return
-	var frame_data = {}
+	
+	onto.erase_frame(fname)
+	onto.add_frame(fname)
 	
 	for slot in frame_slots.get_children():
 		var slot_name = slot.get_node("VBoxContainer/SlotName").get_text()
-		frame_data[slot_name] = {}
 		for facet in slot.get_node("VBoxContainer/VBoxContainerFacets").get_children():
 			var facet_name = facet.get_node("VBoxContainer/FacetName").get_text()
-			frame_data[slot_name][facet_name] = []
 			for filler in facet.get_node("VBoxContainer/VBoxContainerFillers").get_children():
 				var filler_expression = filler.get_text()
-				frame_data[slot_name][facet_name].append(filler_expression)
+				onto.get_frame(fname).addFiller(slot_name, facet_name, filler_expression)
 	
-	frames[cname] = frame_data
+	var onto_dict = onto.turn_into_dictionary()
 	
 	var file = File.new()
 	file.open(json_path, File.WRITE)
-	file.store_line(to_json(frames))
+	file.store_line(JSON.print(onto_dict, "\t"))
 	file.close()
 	
 	refresh_tree()
