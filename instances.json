@@ -1,9 +1,9 @@
 {
 	"@env.place.1": {
-		"name": "Main Plaza"
+		"name": {"value":["Main Plaza"]}
 	},
 	"@env.human.1": {
-		"location": "@env.place.1",
-		"name": "Anna"
+		"location": {"value":["@env.place.1"]},
+		"name": {"value":["Anna"]}
 	}
 }

@@ -232,5 +232,34 @@
 				"\"Origin frame, source for all framessss\""
 			]
 		}
+	},
+	"assertive-act": {
+		"is-a": {
+			"value": [
+				"communicative-event"
+			]
+		}
+	},
+	"inform": {
+		"definition": {
+			"value": [
+				"\"the event of asserting something to provide information to another person or set of persons\""
+			],
+		},
+		"is-a": {
+			"value": [
+				"assertive-act"
+			]
+		},
+		"agent": {
+			"sem": [
+				"*human"
+			]
+		},
+		"theme": {
+			"sem": [
+				"*event"
+			]
+		}
 	}
 }

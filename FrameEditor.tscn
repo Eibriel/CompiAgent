@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="MenuButton" type="MenuButton" parent="VBoxContainer"]
+visible = false
 margin_right = 35.0
 margin_bottom = 20.0
 size_flags_horizontal = 0
@@ -19,7 +20,6 @@ text = "File"
 items = [ "Open ...", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false, "Save as ...", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
-margin_top = 24.0
 margin_right = 1080.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
@@ -27,7 +27,7 @@ size_flags_vertical = 3
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/VSplitContainer"]
 margin_right = 1080.0
-margin_bottom = 506.0
+margin_bottom = 524.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.26
@@ -35,7 +35,7 @@ split_offset = 200
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
 margin_right = 734.0
-margin_bottom = 506.0
+margin_bottom = 524.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -53,59 +53,59 @@ placeholder_text = "Frame Name"
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
 margin_top = 46.0
 margin_right = 734.0
-margin_bottom = 426.0
+margin_bottom = 444.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainerSlots" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ScrollContainer"]
 margin_right = 734.0
-margin_bottom = 380.0
+margin_bottom = 398.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 430.0
+margin_top = 448.0
 margin_right = 734.0
-margin_bottom = 434.0
+margin_bottom = 452.0
 
 [node name="ButtonAddSlot" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 438.0
+margin_top = 456.0
 margin_right = 734.0
-margin_bottom = 458.0
+margin_bottom = 476.0
 text = "Add Slot"
 
 [node name="ButtonSaveFrame" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 462.0
+margin_top = 480.0
 margin_right = 734.0
-margin_bottom = 482.0
+margin_bottom = 500.0
 text = "Save Frame"
 
 [node name="ButtonNewFrame" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 486.0
+margin_top = 504.0
 margin_right = 734.0
-margin_bottom = 506.0
+margin_bottom = 524.0
 text = "New Frame"
 
 [node name="Tree" type="Tree" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
 margin_left = 746.0
 margin_right = 1080.0
-margin_bottom = 506.0
+margin_bottom = 524.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 hide_root = true
 
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/VSplitContainer"]
-margin_top = 518.0
+margin_top = 536.0
 margin_right = 1080.0
-margin_bottom = 696.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.45
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/VSplitContainer/VSplitContainer"]
 margin_right = 1080.0
-margin_bottom = 178.0
+margin_bottom = 184.0
 size_flags_vertical = 3
 text = "Tests"

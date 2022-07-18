@@ -58,7 +58,7 @@ scrolling_enabled = false
 
 [node name="Control" parent="TabContainer/TMR Editor" instance=ExtResource( 3 )]
 
-[node name="Tests" type="Tabs" parent="TabContainer"]
+[node name="Unit Tests" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -68,7 +68,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 scrolling_enabled = false
 
-[node name="Gut" parent="TabContainer/Tests" instance=ExtResource( 1 )]
+[node name="Gut" parent="TabContainer/Unit Tests" instance=ExtResource( 1 )]
 visible = true
 _run_on_load = false
 _should_print_to_console = false
