@@ -1,37 +1,8 @@
 {
-	"abstract-object": {
-		"is-a": {
-			"value": [
-				"mental-object"
-			]
-		}
-	},
 	"attribute": {
 		"is-a": {
 			"value": [
 				"property"
-			]
-		}
-	},
-	"cognitive-event": {
-		"is-a": {
-			"value": [
-				"mental-event"
-			]
-		}
-	},
-	"communicative-event": {
-		"is-a": {
-			"value": [
-				"social-event",
-				"mental-event"
-			]
-		}
-	},
-	"emotional-event": {
-		"is-a": {
-			"value": [
-				"mental-event"
 			]
 		}
 	},
@@ -43,7 +14,7 @@
 		},
 		"is-a": {
 			"value": [
-				"all"
+				"everything"
 			]
 		}
 	},
@@ -61,17 +32,10 @@
 			]
 		}
 	},
-	"geopolitical-entity": {
-		"is-a": {
-			"value": [
-				"social-object"
-			]
-		}
-	},
 	"human": {
 		"is-a": {
 			"value": [
-				"material"
+				"object"
 			]
 		}
 	},
@@ -82,31 +46,10 @@
 			]
 		}
 	},
-	"material": {
-		"is-a": {
-			"value": [
-				"physical-object"
-			]
-		}
-	},
-	"mental-event": {
-		"is-a": {
-			"value": [
-				"event"
-			]
-		}
-	},
-	"mental-object": {
-		"is-a": {
-			"value": [
-				"object"
-			]
-		}
-	},
 	"object": {
 		"is-a": {
 			"value": [
-				"all"
+				"everything"
 			]
 		}
 	},
@@ -117,46 +60,10 @@
 			]
 		}
 	},
-	"organization": {
-		"is-a": {
-			"value": [
-				"social-object"
-			]
-		}
-	},
-	"perceptual-event": {
-		"is-a": {
-			"value": [
-				"mental-event",
-				"physical-event"
-			]
-		}
-	},
-	"physical-event": {
-		"is-a": {
-			"value": [
-				"event"
-			]
-		}
-	},
-	"physical-object": {
-		"is-a": {
-			"value": [
-				"object"
-			]
-		}
-	},
-	"place": {
-		"is-a": {
-			"value": [
-				"physical-object"
-			]
-		}
-	},
 	"property": {
 		"is-a": {
 			"value": [
-				"all"
+				"everything"
 			]
 		}
 	},
@@ -167,45 +74,10 @@
 			]
 		}
 	},
-	"representational-object": {
-		"is-a": {
-			"value": [
-				"mental-object"
-			]
-		}
-	},
 	"scalar-attribute": {
 		"is-a": {
 			"value": [
 				"attribute"
-			]
-		}
-	},
-	"separable-entity": {
-		"is-a": {
-			"value": [
-				"physical-object"
-			]
-		}
-	},
-	"social-event": {
-		"is-a": {
-			"value": [
-				"event"
-			]
-		}
-	},
-	"social-object": {
-		"is-a": {
-			"value": [
-				"object"
-			]
-		}
-	},
-	"social-role": {
-		"is-a": {
-			"value": [
-				"social-object"
 			]
 		}
 	},
@@ -217,26 +89,19 @@
 		},
 		"domain": {
 			"sem": [
-				"*all"
+				"*everything"
 			]
 		},
 		"range": {
 			"sem": [
-				"*all"
+				"*everything"
 			]
 		}
 	},
-	"all": {
+	"everything": {
 		"description": {
 			"value": [
-				"\"Origin frame, source for all framessss\""
-			]
-		}
-	},
-	"assertive-act": {
-		"is-a": {
-			"value": [
-				"communicative-event"
+				"\"Origin frame, source for everything\""
 			]
 		}
 	},
@@ -244,11 +109,11 @@
 		"definition": {
 			"value": [
 				"\"the event of asserting something to provide information to another person or set of persons\""
-			],
+			]
 		},
 		"is-a": {
 			"value": [
-				"assertive-act"
+				"event"
 			]
 		},
 		"agent": {
@@ -259,6 +124,13 @@
 		"theme": {
 			"sem": [
 				"*event"
+			]
+		}
+	},
+	"place": {
+		"is-a": {
+			"value": [
+				"object"
 			]
 		}
 	}

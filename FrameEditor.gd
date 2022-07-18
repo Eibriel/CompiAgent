@@ -90,7 +90,7 @@ func refresh_tree():
 	var root_frame = frames_tree.create_item()
 	frames_tree.set_hide_root(true)
 	
-	add_item_to_tree(frames_tree, root_frame, "all")
+	add_item_to_tree(frames_tree, root_frame, "everything")
 
 
 func _on_Tree_cell_selected():
