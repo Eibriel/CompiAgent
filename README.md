@@ -23,10 +23,14 @@ Databases:
 
 ## How to test it?
 
-### Itch.io
-Can be tested on the Itch.io page: https://eibriel.itch.io/compi (may be out of date)
+Can be tested online on the Itch.io page: https://eibriel.itch.io/compi (changes on the databases will not be saved)
 
-### Godot
+## How to contribute?
+
+**Databases content (concepts, instances, etc) must be original, must not be copied from a paper, a book or any other source**
+
+**When contributing to the databases (concepts, instances, etc) you accept that the contribution will be released under the Creative Commons Attribution 4.0 International License**
+
 Download Godot: https://godotengine.org/download
 
 Clone this repo locally
@@ -34,6 +38,10 @@ Clone this repo locally
 When opening Godot select "Import Project", and find the cloned folder
 
 Once imported you can run it with the "Play" button on the top right corner
+
+Frames are saved on `frames.json` and instances in `instances.json`.
+
+For guidelines on what concepts to add and how to differenciate concepts and instances you can check the [following paper](https://www.researchgate.net/publication/2775702_Ontology_Development_for_Machine_Translation_Ideology_and_Methodology).
 
 ---
 
