@@ -1,9 +1,0 @@
-{
-	"@env.place.1": {
-		"name": {"value":["Main Plaza"]}
-	},
-	"@env.human.1": {
-		"location": {"value":["@env.place.1"]},
-		"name": {"value":["Anna"]}
-	}
-}

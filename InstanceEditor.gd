@@ -8,8 +8,6 @@ onready var button_save_frame = $VBoxContainer/VSplitContainer/HSplitContainer/V
 onready var button_new_frame = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer2/ButtonNewFrame
 onready var button_add_slot = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer2/ButtonAddSlot
 
-
-
 onready var instance_list = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ItemList
 onready var instance_code = $VBoxContainer/VSplitContainer/HSplitContainer/TextEdit
 onready var button_add_instance = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ButtonAddInstance
@@ -21,11 +19,7 @@ var SlotEditor = load("res://modules/slot_editor.tscn")
 
 var json_path = "res://instances.json"
 
-## Ontology class
-var Ontology = load("res://CompiAgent/ontology_class.gd")
-
-## Ontology instance
-var onto = Ontology.new()
+var onto = CompiAgent.frames
 
 func _ready():
 	_load_instances()

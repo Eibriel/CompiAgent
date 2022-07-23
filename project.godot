@@ -31,6 +31,10 @@ config/description="An exploration on building on the edge, privacy first, conve
 run/main_scene="res://MainScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CompiAgent="*res://CompiAgent/CompiAgent.gd"
+
 [display]
 
 window/size/width=1080

@@ -11,15 +11,28 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="MenuButton" type="MenuButton" parent="VBoxContainer"]
-visible = false
-margin_right = 35.0
-margin_bottom = 20.0
-size_flags_horizontal = 0
-text = "File"
-items = [ "Open ...", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false, "Save as ...", null, 0, false, false, 2, 0, null, "", false ]
+[node name="LineEditNamespace" type="LineEdit" parent="VBoxContainer"]
+margin_right = 1080.0
+margin_bottom = 24.0
+text = "onto"
+placeholder_text = "Namespace - examples: *, onto, env"
+
+[node name="LineEditRoot" type="LineEdit" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 1080.0
+margin_bottom = 52.0
+text = "onto.everything"
+placeholder_text = "Root node (can be empty) - example: onto.everything"
+
+[node name="LineEditRelation" type="LineEdit" parent="VBoxContainer"]
+margin_top = 56.0
+margin_right = 1080.0
+margin_bottom = 80.0
+text = "*.is-a"
+placeholder_text = "Relation to build tree (can be empty) - example: *.is-a"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
+margin_top = 84.0
 margin_right = 1080.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
@@ -27,7 +40,7 @@ size_flags_vertical = 3
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/VSplitContainer"]
 margin_right = 1080.0
-margin_bottom = 524.0
+margin_bottom = 462.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.26
@@ -35,7 +48,7 @@ split_offset = 200
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
 margin_right = 734.0
-margin_bottom = 524.0
+margin_bottom = 462.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -53,59 +66,59 @@ placeholder_text = "Frame Name"
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
 margin_top = 46.0
 margin_right = 734.0
-margin_bottom = 444.0
+margin_bottom = 382.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainerSlots" type="VBoxContainer" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ScrollContainer"]
 margin_right = 734.0
-margin_bottom = 398.0
+margin_bottom = 336.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 448.0
+margin_top = 386.0
 margin_right = 734.0
-margin_bottom = 452.0
+margin_bottom = 390.0
 
 [node name="ButtonAddSlot" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 456.0
+margin_top = 394.0
 margin_right = 734.0
-margin_bottom = 476.0
+margin_bottom = 414.0
 text = "Add Slot"
 
 [node name="ButtonSaveFrame" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 480.0
+margin_top = 418.0
 margin_right = 734.0
-margin_bottom = 500.0
+margin_bottom = 438.0
 text = "Save Frame"
 
 [node name="ButtonNewFrame" type="Button" parent="VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
-margin_top = 504.0
+margin_top = 442.0
 margin_right = 734.0
-margin_bottom = 524.0
+margin_bottom = 462.0
 text = "New Frame"
 
 [node name="Tree" type="Tree" parent="VBoxContainer/VSplitContainer/HSplitContainer"]
 margin_left = 746.0
 margin_right = 1080.0
-margin_bottom = 524.0
+margin_bottom = 462.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 hide_root = true
 
 [node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/VSplitContainer"]
-margin_top = 536.0
+margin_top = 474.0
 margin_right = 1080.0
-margin_bottom = 720.0
+margin_bottom = 636.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.45
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/VSplitContainer/VSplitContainer"]
 margin_right = 1080.0
-margin_bottom = 184.0
+margin_bottom = 162.0
 size_flags_vertical = 3
 text = "Tests"

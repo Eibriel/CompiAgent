@@ -1,137 +1,253 @@
 {
-	"attribute": {
-		"is-a": {
+	"onto.attribute": {
+		"*.is-a": {
 			"value": [
-				"property"
+				"onto.property"
 			]
 		}
 	},
-	"event": {
-		"description": {
+	"onto.episode": {
+		"*.description": {
 			"value": [
 				"\"Something that happends\""
 			]
 		},
-		"is-a": {
+		"*.is-a": {
 			"value": [
-				"everything"
+				"onto.everything"
 			]
 		}
 	},
-	"event-object-relation": {
-		"is-a": {
+	"onto.episode-thing-relation": {
+		"*.description": {
 			"value": [
-				"relation"
-			]
-		}
-	},
-	"event-relation": {
-		"is-a": {
-			"value": [
-				"relation"
-			]
-		}
-	},
-	"human": {
-		"is-a": {
-			"value": [
-				"object"
-			]
-		}
-	},
-	"linear-attribute": {
-		"is-a": {
-			"value": [
-				"attribute"
-			]
-		}
-	},
-	"object": {
-		"is-a": {
-			"value": [
-				"everything"
-			]
-		}
-	},
-	"object-relation": {
-		"is-a": {
-			"value": [
-				"relation"
-			]
-		}
-	},
-	"property": {
-		"is-a": {
-			"value": [
-				"everything"
-			]
-		}
-	},
-	"relation": {
-		"is-a": {
-			"value": [
-				"property"
-			]
-		}
-	},
-	"scalar-attribute": {
-		"is-a": {
-			"value": [
-				"attribute"
-			]
-		}
-	},
-	"is-a": {
-		"is-a": {
-			"value": [
-				"relation"
+				"\"A relation between an episode and a thing\""
 			]
 		},
-		"domain": {
-			"sem": [
-				"*everything"
-			]
-		},
-		"range": {
-			"sem": [
-				"*everything"
+		"*.is-a": {
+			"value": [
+				"onto.relation"
 			]
 		}
 	},
-	"everything": {
-		"description": {
+	"onto.episode-relation": {
+		"*.description": {
+			"value": [
+				"\"A relation between an episode and another episode\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.relation"
+			]
+		}
+	},
+	"onto.linear-attribute": {
+		"*.is-a": {
+			"value": [
+				"onto.attribute"
+			]
+		}
+	},
+	"onto.thing": {
+		"*.description": {
+			"value": [
+				"\"Something\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.everything"
+			]
+		}
+	},
+	"onto.thing-relation": {
+		"*.description": {
+			"value": [
+				"\"A relation between two things\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.relation"
+			]
+		}
+	},
+	"onto.property": {
+		"*.is-a": {
+			"value": [
+				"onto.everything"
+			]
+		}
+	},
+	"onto.relation": {
+		"*.is-a": {
+			"value": [
+				"onto.property"
+			]
+		}
+	},
+	"onto.scalar-attribute": {
+		"*.is-a": {
+			"value": [
+				"onto.attribute"
+			]
+		}
+	},
+	"*.is-a": {
+		"*.description": {
+			"value": [
+				"\"A relation to build a toxonomy of concepts\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.relation"
+			]
+		},
+		"*.domain": {
+			"sem": [
+				"*onto.everything"
+			]
+		},
+		"*.range": {
+			"sem": [
+				"*onto.everything"
+			]
+		}
+	},
+	"onto.everything": {
+		"*.description": {
 			"value": [
 				"\"Origin frame, source for everything\""
 			]
 		}
 	},
-	"inform": {
+	"onto.place": {
 		"definition": {
 			"value": [
-				"\"the event of asserting something to provide information to another person or set of persons\""
+				"\"a location or place\""
 			]
 		},
-		"is-a": {
+		"*.is-a": {
 			"value": [
-				"event"
-			]
-		},
-		"agent": {
-			"sem": [
-				"*human"
-			]
-		},
-		"theme": {
-			"sem": [
-				"*event"
+				"onto.physical-thing"
 			]
 		}
 	},
-	"place": {
-		"is-a": {
+	"onto.material-thing": {
+		"definition": {
 			"value": [
-				"object"
+				"\"a thing that is physically present, for example 'apple'\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.thing"
 			]
 		}
+	},
+	"onto.inmaterial-thing": {
+		"definition": {
+			"value": [
+				"\"a thing that is not physically present, for example 'honor' or 'four'\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.thing"
+			]
+		}
+	},
+	"onto.robot": {
+		"definition": {
+			"value": [
+				"\"A machine that is not a person\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.material-thing"
+			]
+		}
+	},
+	"onto.virtual-being": {
+		"definition": {
+			"value": [
+				"\"A being that exists in a digital world\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.inmaterial-thing"
+			]
+		}
+	},
+	"onto.cultural-thing": {
+		"definition": {
+			"value": [
+				"\"A thing that emerges from human society, for example a 'country'\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.thing"
+			]
+		}
+	},
+	"onto.country": {
+		"definition": {
+			"value": [
+				"\"A cultural thing that is a country\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.cultural-thing"
+			]
+		}
+	},
+	"onto.internet": {
+		"definition": {
+			"value": [
+				"\"The world wide web\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.cultural-thing"
+			]
+		}
+	},
+	"onto.human": {
+		"*.description": {
+			"value": [
+				"\"A person\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.material-thing"
+			]
+		},
+		"onto.agency": {
+			"default": [
+				">0.9"
+			],
+			"not": [
+				"<=0.7"
+			],
+			"relaxable-to": [
+				">0.7"
+			]
+		}
+	},
+
+	"env.place.1": {
+		"onto.name": {"value":["Main Plaza"]}
+	},
+	"env.human.1": {
+		"onto.location": {"value":["env.place.1"]},
+		"onto.name": {"value":["Anna"]}
 	}
 }

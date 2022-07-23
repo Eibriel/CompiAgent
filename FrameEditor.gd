@@ -1,5 +1,9 @@
 extends Control
 
+onready var lineedit_namespace = $VBoxContainer/LineEditNamespace
+onready var lineedit_root = $VBoxContainer/LineEditRoot
+onready var lineedit_relation = $VBoxContainer/LineEditRelation
+
 onready var frames_tree = $VBoxContainer/VSplitContainer/HSplitContainer/Tree
 onready var frame_edit = $VBoxContainer/VSplitContainer/HSplitContainer/RichTextLabel
 onready var frame_slots = $VBoxContainer/VSplitContainer/HSplitContainer/VBoxContainer/ScrollContainer/VBoxContainerSlots
@@ -13,36 +17,7 @@ var SlotEditor = load("res://modules/slot_editor.tscn")
 
 var json_path = "res://frames.json"
 
-## Ontology class
-var Ontology = load("res://CompiAgent/ontology_class.gd")
-
-## Ontology instance
-var onto = Ontology.new()
-
-var default_frames = {
-	"all": {
-		"description": {
-			"value": ["\"Origin frame, source for all frames (default frames)\""]
-		}
-	},
-	"event": {
-		"description": {
-			"value": ["\"Something that happends\""]
-		},
-		"is-a": {
-			"value": ["all"]
-		}
-	},
-	
-	"is-a": {
-		"domain": {
-			"sem": ["*all"]
-		},
-		"range": {
-			"sem": ["*all"]
-		}
-	}
-}
+var onto = CompiAgent.frames
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,6 +27,10 @@ func _ready():
 	button_save_frame.connect("button_up", self, "_on_ButtonSaveFrame_button_up", [])
 	button_add_slot.connect("button_up", self, "_on_ButtonAddSlot_button_up", [])
 	
+	lineedit_namespace.connect("text_changed", self, "_on_LineEditNamespace_text_changed", [])
+	lineedit_root.connect("text_changed", self, "_on_LineEditRoot_text_changed", [])
+	lineedit_relation.connect("text_changed", self, "_on_LineEditRelation_text_changed", [])
+	
 	var file = File.new()
 	
 	if file.file_exists(json_path):
@@ -60,8 +39,6 @@ func _ready():
 		var frames = parse_json(text)
 		file.close()
 		onto.load_from_dictionary(frames)
-	else:
-		onto.load_from_dictionary(default_frames)
 	
 	refresh_tree()
 
@@ -76,9 +53,11 @@ func add_item_to_tree(tree, root, frame_name):
 
 	for id in frames_names:
 		# Get is-a elements for id
-		var is_a_related = onto.get_related(id, "is-a")
+		var is_a_related = onto.get_related(id, lineedit_relation.get_text())
 		if not is_a_related:
 			continue
+		if lineedit_namespace.get_text() != "" and not id.begins_with(lineedit_namespace.get_text()):
+				continue
 		# If frame_name in is-a
 		# add to tree as child of frame_item
 		if is_a_related.get_fillers(false).has(frame_name):
@@ -90,7 +69,14 @@ func refresh_tree():
 	var root_frame = frames_tree.create_item()
 	frames_tree.set_hide_root(true)
 	
-	add_item_to_tree(frames_tree, root_frame, "everything")
+	if lineedit_root.get_text() == "" or lineedit_relation.get_text() == "":
+		var frames_names = onto.get_frames_names()
+		for id in frames_names:
+			if lineedit_namespace.get_text() != "" and not id.begins_with(lineedit_namespace.get_text()):
+				continue
+			add_item_to_tree(frames_tree, root_frame, id)
+	else:
+		add_item_to_tree(frames_tree, root_frame, lineedit_root.get_text())
 
 
 func _on_Tree_cell_selected():
@@ -191,5 +177,11 @@ func _on_ButtonAddFiller_button_up(facet_editor):
 	addFiller(facet_editor)
 
 
-func _on_select_question(q, a):
-	pass
+func _on_LineEditNamespace_text_changed(text):
+	refresh_tree()
+
+func _on_LineEditRoot_text_changed(text):
+	refresh_tree()
+	
+func _on_LineEditRelation_text_changed(text):
+	refresh_tree()

@@ -234,5 +234,4 @@ func turn_into_dictionary():
 				var facet = slot.get_facet(facet_name)
 				frames_data[frame_name][slot_name][facet_name] = facet.get_fillers(false)
 	return frames_data
-				
-			
+
