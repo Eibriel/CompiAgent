@@ -6,7 +6,7 @@
 			]
 		}
 	},
-	"onto.episode": {
+	"onto.event": {
 		"*.description": {
 			"value": [
 				"\"Something that happends\""
@@ -14,14 +14,14 @@
 		},
 		"*.is-a": {
 			"value": [
-				"onto.everything"
+				"onto.all"
 			]
 		}
 	},
-	"onto.episode-thing-relation": {
+	"onto.event-object-relation": {
 		"*.description": {
 			"value": [
-				"\"A relation between an episode and a thing\""
+				"\"A relation between an event and a object\""
 			]
 		},
 		"*.is-a": {
@@ -30,10 +30,10 @@
 			]
 		}
 	},
-	"onto.episode-relation": {
+	"onto.event-relation": {
 		"*.description": {
 			"value": [
-				"\"A relation between an episode and another episode\""
+				"\"A relation between an event and another event\""
 			]
 		},
 		"*.is-a": {
@@ -49,7 +49,7 @@
 			]
 		}
 	},
-	"onto.thing": {
+	"onto.object": {
 		"*.description": {
 			"value": [
 				"\"Something\""
@@ -57,14 +57,14 @@
 		},
 		"*.is-a": {
 			"value": [
-				"onto.everything"
+				"onto.all"
 			]
 		}
 	},
-	"onto.thing-relation": {
+	"onto.object-relation": {
 		"*.description": {
 			"value": [
-				"\"A relation between two things\""
+				"\"A relation between two objects\""
 			]
 		},
 		"*.is-a": {
@@ -76,7 +76,7 @@
 	"onto.property": {
 		"*.is-a": {
 			"value": [
-				"onto.everything"
+				"onto.all"
 			]
 		}
 	},
@@ -94,6 +94,7 @@
 			]
 		}
 	},
+
 	"*.is-a": {
 		"*.description": {
 			"value": [
@@ -107,115 +108,178 @@
 		},
 		"*.domain": {
 			"sem": [
-				"*onto.everything"
+				"*onto.all"
 			]
 		},
 		"*.range": {
 			"sem": [
-				"*onto.everything"
+				"*onto.all"
+			]
+		},
+		"*.inverse-of": {
+			"sem": [
+				"*onto.subclasses"
 			]
 		}
 	},
-	"onto.everything": {
+
+	"*.instance-of": {
 		"*.description": {
 			"value": [
-				"\"Origin frame, source for everything\""
+				"\"A relation between instances and concepts\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.relation"
+			]
+		},
+		"*.domain": {
+			"sem": [
+				"*onto.all"
+			]
+		},
+		"*.range": {
+			"sem": [
+				"*onto.all"
+			]
+		},
+		"*.inverse-of": {
+			"sem": [
+				"*onto.instances"
 			]
 		}
 	},
+
+	"*.location-of": {
+		"*.description": {
+			"value": [
+				"\"A relation between places and events\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.relation"
+			]
+		},
+		"*.domain": {
+			"sem": [
+				"*onto.place"
+			]
+		},
+		"*.range": {
+			"sem": [
+				"*onto.event"
+			]
+		},
+		"*.inverse-of": {
+			"sem": [
+				"*onto.locations"
+			]
+		}
+	},
+
+	"onto.all": {
+		"*.description": {
+			"value": [
+				"\"Origin frame, source for all\""
+			]
+		}
+	},
+	
 	"onto.place": {
-		"definition": {
+		"*.description": {
 			"value": [
 				"\"a location or place\""
 			]
 		},
 		"*.is-a": {
 			"value": [
-				"onto.physical-thing"
+				"onto.physical-object"
 			]
 		}
 	},
-	"onto.material-thing": {
-		"definition": {
+	"onto.material-object": {
+		"*.description": {
 			"value": [
-				"\"a thing that is physically present, for example 'apple'\""
+				"\"a object that is physically present, for example 'apple'\""
 			]
 		},
 		"*.is-a": {
 			"value": [
-				"onto.thing"
+				"onto.object"
 			]
 		}
 	},
-	"onto.inmaterial-thing": {
-		"definition": {
+	"onto.inmaterial-object": {
+		"*.description": {
 			"value": [
-				"\"a thing that is not physically present, for example 'honor' or 'four'\""
+				"\"a object that is not physically present, for example 'honor' or 'four'\""
 			]
 		},
 		"*.is-a": {
 			"value": [
-				"onto.thing"
+				"onto.object"
 			]
 		}
 	},
 	"onto.robot": {
-		"definition": {
+		"*.description": {
 			"value": [
 				"\"A machine that is not a person\""
 			]
 		},
 		"*.is-a": {
 			"value": [
-				"onto.material-thing"
+				"onto.material-object"
 			]
 		}
 	},
 	"onto.virtual-being": {
-		"definition": {
+		"*.description": {
 			"value": [
 				"\"A being that exists in a digital world\""
 			]
 		},
 		"*.is-a": {
 			"value": [
-				"onto.inmaterial-thing"
+				"onto.inmaterial-object"
 			]
 		}
 	},
-	"onto.cultural-thing": {
-		"definition": {
+	"onto.cultural-object": {
+		"*.description": {
 			"value": [
-				"\"A thing that emerges from human society, for example a 'country'\""
+				"\"A object that emerges from human society, for example a 'country'\""
 			]
 		},
 		"*.is-a": {
 			"value": [
-				"onto.thing"
+				"onto.object"
 			]
 		}
 	},
 	"onto.country": {
-		"definition": {
+		"*.description": {
 			"value": [
-				"\"A cultural thing that is a country\""
+				"\"A cultural object that is a country\""
 			]
 		},
 		"*.is-a": {
 			"value": [
-				"onto.cultural-thing"
+				"onto.cultural-object"
 			]
 		}
 	},
 	"onto.internet": {
-		"definition": {
+		"*.description": {
 			"value": [
 				"\"The world wide web\""
 			]
 		},
 		"*.is-a": {
 			"value": [
-				"onto.cultural-thing"
+				"onto.cultural-object"
 			]
 		}
 	},
@@ -227,7 +291,7 @@
 		},
 		"*.is-a": {
 			"value": [
-				"onto.material-thing"
+				"onto.material-object"
 			]
 		},
 		"onto.agency": {
@@ -243,11 +307,90 @@
 		}
 	},
 
+	"onto.food": {
+		"*.description": {
+			"value": [
+				"\"A object that is food\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.material-object"
+			]
+		}
+	},
+
+	"onto.ingest": {
+		"*.description": {
+			"value": [
+				"\"The act of ingesting food\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.event"
+			]
+		},
+		"*.agent": {
+			"sem": [
+				"*onto.human"
+			]
+		},
+		"*.theme": {
+			"sem": [
+				"*onto.food"
+			]
+		}
+	},
+
+	"onto.workplace": {
+		"*.description": {
+			"value": [
+				"\"A place where people work\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.place"
+			]
+		}
+	},
+
+	"onto.restaurant": {
+		"*.description": {
+			"value": [
+				"\"A place where people eat\""
+			]
+		},
+		"*.is-a": {
+			"value": [
+				"onto.place"
+			]
+		},
+		"*.location-of": {
+			"sem": [
+				"*onto.ingest"
+			]
+		}
+	},
+
 	"env.place.1": {
-		"onto.name": {"value":["Main Plaza"]}
+		"onto.name": {
+			"value": [
+				"Main Plaza"
+			]
+		}
 	},
 	"env.human.1": {
-		"onto.location": {"value":["env.place.1"]},
-		"onto.name": {"value":["Anna"]}
+		"onto.location": {
+			"value": [
+				"env.place.1"
+			]
+		},
+		"onto.name": {
+			"value": [
+				"Anna"
+			]
+		}
 	}
 }

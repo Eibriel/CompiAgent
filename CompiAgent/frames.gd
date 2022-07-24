@@ -104,6 +104,11 @@ class Frame:
 		s = Slot.new(slot_name)
 		slots[slot_name] = s
 		return s
+		
+	func remove_slot(slot_name):
+		if not slots.has(slot_name):
+			return
+		slots.erase(slot_name)
 	
 	func get_slot(slot_name):
 		if not slots.has(slot_name):
@@ -235,3 +240,16 @@ func turn_into_dictionary():
 				frames_data[frame_name][slot_name][facet_name] = facet.get_fillers(false)
 	return frames_data
 
+func copy_frame(frame_name, new_name):
+	if frame_name == new_name:
+		return
+	var frame = get_frame(frame_name)
+	if not frame:
+		return
+	var f = add_frame(new_name)
+	for slot_name in frame.get_slot_names():
+		var slot = frame.get_slot(slot_name)
+		for facet_name in slot.get_facet_names():
+			var facet = slot.get_facet(facet_name)
+			for filler in facet.get_fillers(false):
+				f.addFiller(slot_name, facet_name, filler)
