@@ -21,6 +21,8 @@ Databases:
 - Lexicon (lexemes)
 - Onomasticon (names)
 
+Download datasets from [Kaggle](https://www.kaggle.com/datasets/eibriel/compiagent).
+
 ## How to test it?
 
 Can be tested online on the Itch.io page: https://eibriel.itch.io/compi (changes on the databases will not be saved)
