@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="GraphNodeInstance" type="GraphNode"]
+margin_right = 217.0
+margin_bottom = 92.0
+title = "Instance"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 0, 0, 1 )
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 201.0
+margin_bottom = 44.0
+text = "Instance Name"
