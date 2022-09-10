@@ -45,6 +45,9 @@ var finger_selector = -1
 var is_signing = false
 var first_configuration = false
 
+var discrete_direction: int = -1
+var direction_string: String = ""
+
 var hand_textures = []
 
 var hand_rects = [
@@ -84,6 +87,10 @@ func _ready():
 	for n in range(10):
 		var p:String = "res://hand_textures/hand_texture_"+String(n+1)+".png"
 		hand_textures.append(load(p))
+	
+	print("levenshteinDistance: 3 ", levenshteinDistance("horse", "ros"))
+	print("levenshteinDistance: 3 ", levenshteinDistance("kitten", "sitting"))
+	print("levenshteinDistance: 4 ", levenshteinDistance("shine", "train"))
 
 
 # Configuration selection
@@ -149,6 +156,16 @@ func _on_Area2D_input_event_b(viewport, event: InputEvent, shape_idx):
 		desired_hand_position = local_pos + Vector2(646, 200)
 		desired_hand_rotation = local_pos.angle_to_point(previous_position) + PI/2
 		
+		if follow:
+			var ll: Vector2 = previous_position - local_pos
+			ll = ll.normalized()
+			ll = ll.rotated(PI/8)
+			
+			var current_discrete_direction: int = ((rad2deg(ll.angle()) + 180) / 360) * 8
+			if discrete_direction != current_discrete_direction:
+				direction_string += String(current_discrete_direction)
+				discrete_direction = current_discrete_direction
+		
 		$HandPreviousPosition.position = previous_position + Vector2(646, 200)
 		$HandCurrentPosition.position = local_pos + Vector2(646, 200)
 		
@@ -188,7 +205,7 @@ func animate_hand(event: String):
 		tween.tween_property(hand_sprite, "scale", Vector2(0.5, 0.5), 0.1)
 
 func detect_letter():
-	var letters = {
+	var letters_ = {
 		"a": [1, 7, 0], # c, r, d
 		"b": [5, 0, 0],
 		"c": [7, 2, 0],
@@ -219,8 +236,85 @@ func detect_letter():
 		"y": [8, 5, 0],
 		"z": [8, 2, 0],
 	}
+	var letters = {
+		"a": "017", # c, r, d
+		"b": "650",
+		"c": "072",
+		"ch": "256",
+		"d": "620",
+		"e": "042",
+		"f": "754",
+		"g": "695",
+		"h": "701070135",
+		"i": "725",
+		"j": "10750",
+		"k": "731",
+		"l": "622",
+		"ll": "656522",
+		"m": "255",
+		"n": "235",
+		"ñ": "232335",
+		"o": "661",
+		"p": "265",
+		"q": "121",
+		"r": "6565632",
+		"s": "025",
+		"t": "620",
+		"u": "675",
+		"v": "632",
+		"w": "6732",
+		"x": "692",
+		"y": "785",
+		"z": "676782",
+	}
 	label.text = ""
+	# print(cid, rid)
+	direction_string += String(cid) + String(rid)
+	var min_distance = -1
+	var selected_letter = ""
 	for l in letters:
-		if letters[l][0] == cid and letters[l][1] == rid:
-			label.text += "-"+l
-	print(cid, rid)
+		var l_distance = levenshteinDistance(letters[l], direction_string)
+		if min_distance == -1 or l_distance < min_distance:
+			min_distance = l_distance
+			selected_letter = l
+	label.text = selected_letter
+	print(direction_string)
+	direction_string = ""
+	discrete_direction = -1
+
+
+func levenshteinDistance(word1: String, word2: String) -> int:
+	var dp: Array = []
+	dp.resize(word2.length()+1)
+
+	for i in range(dp.size()):
+		var v2: Array = []
+		v2.resize(word1.length()+1)
+		v2.fill(0)
+		dp[i] = v2
+		dp[i][0] = i
+	
+	for i in range(dp[0].size()):
+		dp[0][i] = i
+
+	for row in range(1, dp.size()):
+		for col in range(1, dp[0].size()):
+			var cost
+			if word1[col-1] == word2[row-1]:
+				cost = 0
+			else:
+				cost = 1
+			dp[row][col] = array_min(
+				[dp[row-1][col-1] + cost,  # substitution
+				dp[row-1][col] + 1,  # deletion
+				dp[row][col-1] + 1]  # insertion
+			)
+
+	return dp[dp.size()-1][dp[0].size()-1]
+	
+func array_min(numbers: Array) -> int:
+	var minn = -1
+	for n in numbers:
+		if minn < 0 or n < minn:
+			minn = n
+	return minn
